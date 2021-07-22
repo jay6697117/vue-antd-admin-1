@@ -36,8 +36,8 @@
     <a-form-model-item prop="payPassword" label="支付密码">
       <a-row :gutter="24">
         <a-col :span="16">
-          <a-input-password ref="payPassword" v-model="securityFrom.payPassword" placeholder="请输入支付密码"
-        /></a-col>
+          <a-input-password ref="payPassword" v-model="securityFrom.payPassword" placeholder="请输入支付密码" />
+        </a-col>
         <a-col :span="8">
           <a-button type="link">
             修改

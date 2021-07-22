@@ -31,7 +31,7 @@
                 @pressEnter="toLogin"
                 ref="password"
               >
-                <svg-icon icon="password" :size="14" slot="prefix"> </svg-icon>
+                <svg-icon icon="password" :size="14" slot="prefix"></svg-icon>
               </a-input-password>
             </a-form-model-item>
           </a-tab-pane>
@@ -45,7 +45,7 @@
                 :maxLength="11"
                 type="text"
               >
-                <svg-icon icon="phone" :size="14" slot="prefix"> </svg-icon>
+                <svg-icon icon="phone" :size="14" slot="prefix"></svg-icon>
               </a-input>
             </a-form-model-item>
 
@@ -58,11 +58,10 @@
                 style="width:58%;"
                 ref="code"
                 @pressEnter="toLogin"
-              >
-              </a-input>
-              <a-button size="large" @click="getCode" :disabled="codeStatus" style="width:35%;margin-left:7%">{{
-                phoneCode
-              }}</a-button>
+              ></a-input>
+              <a-button size="large" @click="getCode" :disabled="codeStatus" style="width:35%;margin-left:7%">
+                {{ phoneCode }}
+              </a-button>
             </a-form-model-item>
           </a-tab-pane>
         </a-tabs>

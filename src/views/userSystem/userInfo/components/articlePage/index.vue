@@ -3,9 +3,18 @@
     <a-list item-layout="vertical" :data-source="data" size="large">
       <a-list-item slot="renderItem" slot-scope="item">
         <template slot="actions">
-          <span><a-icon type="star-o" style="margin-right: 8px" /> {{ item.star }}</span>
-          <span> <a-icon type="like-o" style="margin-right: 8px" /> {{ item.like }}</span>
-          <span><a-icon type="message" style="margin-right: 8px" /> {{ item.message }}</span>
+          <span>
+            <a-icon type="star-o" style="margin-right: 8px" />
+            {{ item.star }}
+          </span>
+          <span>
+            <a-icon type="like-o" style="margin-right: 8px" />
+            {{ item.like }}
+          </span>
+          <span>
+            <a-icon type="message" style="margin-right: 8px" />
+            {{ item.message }}
+          </span>
         </template>
         <a-list-item-meta>
           <a slot="title" :href="item.url" target="_blank" style="font-size:1rem">{{ item.title }}</a>

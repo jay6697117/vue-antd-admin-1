@@ -54,11 +54,10 @@ export default {
     );
     const wrap = (
       <div
-        ref="wrap"
+        ref='wrap'
         style={style}
         onScroll={this.handleScroll}
-        class={[this.wrapClass, 'scrollbar__wrap', gutter ? '' : 'scrollbar__wrap--hidden-default']}
-      >
+        class={[this.wrapClass, 'scrollbar__wrap', gutter ? '' : 'scrollbar__wrap--hidden-default']}>
         {[view]}
       </div>
     );

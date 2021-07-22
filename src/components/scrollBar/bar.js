@@ -52,11 +52,10 @@ export default {
     return (
       <div class={['scrollbar__bar', 'is-' + bar.key]} onMousedown={this.clickTrackHandler}>
         <div
-          ref="thumb"
-          class="scrollbar__thumb"
+          ref='thumb'
+          class='scrollbar__thumb'
           onMousedown={this.clickThumbHandler}
-          style={this.renderThumbStyle({ size, move, bar })}
-        ></div>
+          style={this.renderThumbStyle({ size, move, bar })}></div>
       </div>
     );
   },

@@ -4,7 +4,7 @@
 
     <div class="sale-card">
       <sale-title @sendCurrent="getCurrent">
-        <template slot="title"> {{ currentName }} 统计图 </template>
+        <template slot="title">{{ currentName }} 统计图</template>
       </sale-title>
       <a-row class="sale-container" :gutter="16">
         <a-col :span="16" style="height:100%">

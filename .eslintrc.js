@@ -13,7 +13,9 @@ module.exports = {
     semi: 'off',
     'no-unused-vars': [2, { vars: 'all', args: 'none' }],
     quotes: 'off',
-    'no-dupe-keys': 'off'
+    'no-dupe-keys': 'off',
+    'no-undef': 'off',
+    'vue/require-prop-type-constructor': 'off'
   },
   overrides: [
     {

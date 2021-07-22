@@ -8,7 +8,7 @@
         :before-upload="beforeUpload"
         :show-upload-list="false"
       >
-        <a-button type="primary" icon="picture" :loading="loading"> 选择图片 </a-button>
+        <a-button type="primary" icon="picture" :loading="loading">选择图片</a-button>
       </a-upload>
     </div>
     <a-modal title="头像裁剪" :visible="modalShow" :footer="null" :width="800" @cancel="modalShow = false">
@@ -23,8 +23,7 @@
             :autoCropHeight="option.autoCropHeight"
             :fixedBox="option.fixedBox"
             @realTime="realTime"
-          >
-          </vueCropper>
+          ></vueCropper>
         </a-col>
         <a-col :span="12">
           <a-space :size="15">
@@ -32,12 +31,12 @@
             <a-button icon="minus" />
             <a-button icon="undo" />
             <a-button icon="redo" />
-            <a-button type="primary" icon="picture" :loading="loading"> 重新选择图片 </a-button>
+            <a-button type="primary" icon="picture" :loading="loading">重新选择图片</a-button>
           </a-space>
           <div class="accountImg">
             <img :src="previewsImg.url" alt="" :style="previewsImg.img" />
           </div>
-          <a-button type="primary" icon="upload" style="margin-left:150px" @click="saveHeadImg"> 保存头像 </a-button>
+          <a-button type="primary" icon="upload" style="margin-left:150px" @click="saveHeadImg">保存头像</a-button>
         </a-col>
       </a-row>
     </a-modal>

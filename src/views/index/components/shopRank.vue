@@ -5,7 +5,7 @@
         <div style="width:130px">
           <span class="rankIndex inline-block">
             <svg-icon :icon="rankIndex[index + 1]" :size="30" v-if="index < 3" />
-            <span v-else> {{ index + 1 }}</span>
+            <span v-else>{{ index + 1 }}</span>
           </span>
 
           <span style="margin-left:10px">{{ item.area }}</span>

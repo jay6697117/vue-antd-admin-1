@@ -4,7 +4,7 @@
       <div class="text-center" style="font-size:1.3rem">N</div>
       <img src="../../../assets/map/north.png" class="northImg" alt />
     </div>
-    <canvas id="canvas" width="50" height="150"> </canvas>
+    <canvas id="canvas" width="50" height="150"></canvas>
   </div>
 </template>
 

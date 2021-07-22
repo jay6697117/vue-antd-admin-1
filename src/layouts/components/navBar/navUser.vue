@@ -18,7 +18,7 @@
       </a-menu-item>
       <a-menu-divider />
       <a-menu-item>
-        <span @click.self="logout">退出登录 </span>
+        <span @click.self="logout">退出登录</span>
       </a-menu-item>
     </a-menu>
   </a-dropdown>

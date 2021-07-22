@@ -34,7 +34,10 @@
               @blur="inputConfirm"
               @keyup.enter="inputConfirm"
             />
-            <a-tag v-else style="cursor:pointer" @click="writeInput"> <a-icon type="plus" /> New Tag </a-tag>
+            <a-tag v-else style="cursor:pointer" @click="writeInput">
+              <a-icon type="plus" />
+              New Tag
+            </a-tag>
           </div>
           <a-divider />
           <div class="skillList">
