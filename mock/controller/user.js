@@ -46,6 +46,7 @@ module.exports = [
     url: '/user/login',
     type: 'post',
     response: config => {
+      // eslint-disable-next-line
       const { username, password } = config.body;
       const token = tokens[username];
       if (!token) {
@@ -75,6 +76,7 @@ module.exports = [
     url: '/user/testCode',
     type: 'post',
     response: config => {
+      // eslint-disable-next-line
       const { phone, code } = config.body;
       if (phoneCode == code) {
         return {

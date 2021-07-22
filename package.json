@@ -7,7 +7,10 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit ",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lint:fix": "yarn prettier && yarn eslint",
+    "eslint": "eslint --fix --ext .js,.jsx,.vue ./",
+    "prettier": "prettier --write './**/*.{css,less,json,js,jsx,vue}'"
   },
   "dependencies": {
     "ant-design-vue": "^1.6.5",

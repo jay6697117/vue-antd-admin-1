@@ -1,31 +1,31 @@
-const chokidar = require('chokidar')
-const bodyParser = require('body-parser')
-const chalk = require('chalk')
-const path = require('path')
-const Mock = require('mockjs')
-const mockDir = path.join(process.cwd(), 'mock')
+const chokidar = require('chokidar');
+const bodyParser = require('body-parser');
+const chalk = require('chalk');
+const path = require('path');
+const Mock = require('mockjs');
+const mockDir = path.join(process.cwd(), 'mock');
 
 /**
  *
  * @param app
  * @returns {{mockStartIndex: number, mockRoutesLength: number}}
  */
-const registerRoutes = (app) => {
-  let mockLastIndex
-  const { mocks } = require('./index.js')
-  const mocksForServer = mocks.map((route) => {
-    return responseFake(route.url, route.type, route.response)
-  })
+const registerRoutes = app => {
+  let mockLastIndex;
+  const { mocks } = require('./index.js');
+  const mocksForServer = mocks.map(route => {
+    return responseFake(route.url, route.type, route.response);
+  });
   for (const mock of mocksForServer) {
-    app[mock.type](mock.url, mock.response)
-    mockLastIndex = app._router.stack.length
+    app[mock.type](mock.url, mock.response);
+    mockLastIndex = app._router.stack.length;
   }
-  const mockRoutesLength = Object.keys(mocksForServer).length
+  const mockRoutesLength = Object.keys(mocksForServer).length;
   return {
     mockRoutesLength: mockRoutesLength,
-    mockStartIndex: mockLastIndex - mockRoutesLength,
-  }
-}
+    mockStartIndex: mockLastIndex - mockRoutesLength
+  };
+};
 
 /**
  *
@@ -39,55 +39,53 @@ const responseFake = (url, type, respond) => {
     url: new RegExp(`${process.env.VUE_APP_BASE_API}${url}`),
     type: type || 'get',
     response(req, res) {
-      res.status(200)
+      res.status(200);
       if (JSON.stringify(req.body) !== '{}') {
-        console.log(chalk.green(`> 请求地址：${req.path}`))
-        console.log(chalk.green(`> 请求参数：${JSON.stringify(req.body)}\n`))
+        console.log(chalk.green(`> 请求地址：${req.path}`));
+        console.log(chalk.green(`> 请求参数：${JSON.stringify(req.body)}\n`));
       } else {
-        console.log(chalk.green(`> 请求地址：${req.path}\n`))
+        console.log(chalk.green(`> 请求地址：${req.path}\n`));
       }
-      res.json(
-        Mock.mock(respond instanceof Function ? respond(req, res) : respond)
-      )
-    },
-  }
-}
+      res.json(Mock.mock(respond instanceof Function ? respond(req, res) : respond));
+    }
+  };
+};
 /**
  *
  * @param app
  */
-module.exports = (app) => {
-  app.use(bodyParser.json())
+module.exports = app => {
+  app.use(bodyParser.json());
   app.use(
     bodyParser.urlencoded({
-      extended: true,
+      extended: true
     })
-  )
+  );
 
-  const mockRoutes = registerRoutes(app)
-  let mockRoutesLength = mockRoutes.mockRoutesLength
-  let mockStartIndex = mockRoutes.mockStartIndex
+  const mockRoutes = registerRoutes(app);
+  let mockRoutesLength = mockRoutes.mockRoutesLength;
+  let mockStartIndex = mockRoutes.mockStartIndex;
   chokidar
     .watch(mockDir, {
       ignored: /mock-server/,
-      ignoreInitial: true,
+      ignoreInitial: true
     })
-    .on('all', (event) => {
+    .on('all', event => {
       if (event === 'change' || event === 'add') {
         try {
-          app._router.stack.splice(mockStartIndex, mockRoutesLength)
+          app._router.stack.splice(mockStartIndex, mockRoutesLength);
 
-          Object.keys(require.cache).forEach((item) => {
+          Object.keys(require.cache).forEach(item => {
             if (item.includes(mockDir)) {
-              delete require.cache[require.resolve(item)]
+              delete require.cache[require.resolve(item)];
             }
-          })
-          const mockRoutes = registerRoutes(app)
-          mockRoutesLength = mockRoutes.mockRoutesLength
-          mockStartIndex = mockRoutes.mockStartIndex
+          });
+          const mockRoutes = registerRoutes(app);
+          mockRoutesLength = mockRoutes.mockRoutesLength;
+          mockStartIndex = mockRoutes.mockStartIndex;
         } catch (error) {
-          console.log(chalk.red(error))
+          console.log(chalk.red(error));
         }
       }
-    })
-}
+    });
+};
