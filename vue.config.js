@@ -23,11 +23,11 @@ const cdn = {
 module.exports = {
   productionSourceMap: false,
   outputDir: 'dist',
-  publicPath: './',
+  publicPath: process.env.NODE_ENV === 'production' ? '/' : './',
   lintOnSave: !isProd,
   devServer: {
-    port: 8999,
     open: true,
+    port: 8080,
     overlay: {
       warnings: false,
       errors: true
