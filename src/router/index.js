@@ -36,6 +36,7 @@ export const baseRoute = [
 
 export const asyncRoutes = [
   {
+    name: 'root',
     path: '/',
     component: Layout,
     redirect: '/index',
