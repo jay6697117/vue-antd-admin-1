@@ -20,6 +20,7 @@ const actions = {
       } else {
         accessedRoutes = filterAsyncRoute(asyncRoutes, role);
       }
+      console.log(`getRoute accessedRoutes: `, accessedRoutes);
       commit('SET_ROUTE', accessedRoutes);
       resolve(accessedRoutes);
     });
@@ -31,6 +32,7 @@ const actions = {
     await dispatch('user/getInfo', token, { root: true });
     resetRouter();
     const accessedRoutes = await dispatch('getRoute', role);
+    console.log(`changeRole accessedRoutes: `, accessedRoutes);
     router.addRoutes(accessedRoutes);
     await dispatch('tagsView/clearTag', null, { root: true });
   }
@@ -47,6 +49,7 @@ export function filterAsyncRoute(routes, role) {
       arr.push(temp);
     }
   });
+  console.log(`filterAsyncRoute arr:`, arr);
   return arr;
 }
 
